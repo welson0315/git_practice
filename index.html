@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="個人作品集網站 - 展示我的技能、經驗與專案作品">
+    <title>我的個人網站 | Portfolio</title>
+    
+    <style>
+        /* ==================== 全域樣式設定 ==================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --text-color: #333;
+            --bg-color: #ffffff;
+            --gray-color: #7f8c8d;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Microsoft JhengHei', 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray-color);
+            margin-bottom: 50px;
+            font-size: 18px;
+        }
+
+        /* ==================== 導覽列 ==================== */
+        .navbar {
+            background-color: var(--dark-color);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h2 {
+            color: white;
+            font-size: 24px;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+            padding: 5px 10px;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-color);
+        }
+
+        /* ==================== 首頁橫幅 ==================== */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            padding: 100px 20px;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .hero-text .highlight {
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-text h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--dark-color);
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        .hero-image {
+            flex: 0 0 300px;
+        }
+
+        .hero-image img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            background-color: #e0e0e0;
+        }
+
+        /* ==================== 關於我區塊 ==================== */
+        .about-section {
+            padding: 80px 20px;
+            background-color: #f9f9f9;
+        }
+
+        .about-content {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .about-image {
+            flex: 0 0 350px;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            background-color: #e0e0e0;
+            height: 350px;
+            object-fit: cover;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+            color: var(--text-color);
+        }
+
+        .about-info {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 10px;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: var(--dark-color);
+        }
+
+        .info-value {
+            color: var(--gray-color);
+        }
+
+        /* ==================== 技能區塊 ==================== */
+        .skills-section {
+            padding: 80px 20px;
+            background-color: white;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .skill-category h3 {
+            font-size: 24px;
+            margin-bottom: 25px;
+            color: var(--dark-color);
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .skill-item {
+            margin-bottom: 25px;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .skill-bar {
+            background-color: var(--light-color);
+            height: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            height: 100%;
+            border-radius: 5px;
+            transition: width 1s ease;
+        }
+
+        /* ==================== 作品集區塊 ==================== */
+        .portfolio-section {
+            padding: 80px 20px;
+            background-color: #f9f9f9;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .portfolio-image {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            background-color: #e0e0e0;
+        }
+
+        .portfolio-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .portfolio-item:hover .portfolio-image img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.9));
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 25px;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .portfolio-overlay p {
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .view-project {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .view-project:hover {
+            color: var(--secondary-color);
+        }
+
+        /* ==================== 學經歷區塊 ==================== */
+        .experience-section {
+            padding: 80px 20px;
+            background-color: white;
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 50px;
+            margin-top: 50px;
+        }
+
+        .column-title {
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: var(--dark-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 35px;
+            border-left: 2px solid var(--light-color);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--light-color);
+        }
+
+        .timeline-date {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .timeline-content h4 {
+            font-size: 20px;
+            margin-bottom: 5px;
+            color: var(--dark-color);
+        }
+
+        .company {
+            color: var(--gray-color);
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .timeline-content ul {
+            margin-left: 20px;
+            color: var(--text-color);
+        }
+
+        .timeline-content li {
+            margin-bottom: 5px;
+            line-height: 1.6;
+        }
+
+        /* ==================== 聯絡區塊 ==================== */
+        .contact-section {
+            padding: 80px 20px;
+            background-color: #f9f9f9;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 50px;
+            margin-top: 50px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            font-size: 32px;
+            flex-shrink: 0;
+        }
+
+        .contact-details h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: var(--dark-color);
+        }
+
+        .contact-details p {
+            color: var(--gray-color);
+        }
+
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links h4 {
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .social-icon {
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .social-icon:hover {
+            background-color: var(--dark-color);
+        }
+
+        /* ==================== 聯絡表單 ==================== */
+        .contact-form {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--dark-color);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--light-color);
+            border-radius: 5px;
+            font-size: 16px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .contact-form button {
+            width: 100%;
+            font-size: 18px;
+        }
+
+        /* ==================== 頁尾 ==================== */
+        .footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .footer p {
+            margin: 5px 0;
+        }
+
+        /* ==================== 響應式設計 ==================== */
+        @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 36px;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .about-image {
+                flex: 0 0 auto;
+            }
+
+            .about-info {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 導覽列 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h2>我的名字</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">首頁</a></li>
+                <li><a href="#about">關於我</a></li>
+                <li><a href="#skills">技能</a></li>
+                <li><a href="#portfolio">作品集</a></li>
+                <li><a href="#experience">經歷</a></li>
+                <li><a href="#contact">聯絡</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 首頁橫幅區 -->
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>哈囉，我是 <span class="highlight">張小明</span></h1>
+                <h2>網頁前端開發工程師</h2>
+                <p>專注於打造優質的使用者體驗與視覺設計</p>
+                <div class="hero-buttons">
+                    <a href="#portfolio" class="btn btn-primary">查看作品</a>
+                    <a href="#contact" class="btn btn-secondary">聯絡我</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="profile-photo.jpg" alt="個人照片">
+            </div>
+        </div>
+    </section>
+
+    <!-- 關於我區塊 -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">關於我</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="about-photo.jpg" alt="工作照片">
+                </div>
+                <div class="about-text">
+                    <h3>你好！我是一名充滿熱情的網頁開發者</h3>
+                    <p>
+                        畢業於資訊工程系，擁有三年的網頁前端開發經驗。
+                        我熱愛透過程式碼將創意想法轉化為實際的網站產品，
+                        專注於使用者介面設計與互動體驗優化。
+                    </p>
+                    <p>
+                        在工作之餘，我喜歡學習新的程式語言與框架，
+                        並參與開源專案貢獻。我相信持續學習是保持競爭力的關鍵，
+                        也樂於與團隊分享知識與經驗。
+                    </p>
+                    <div class="about-info">
+                        <div class="info-item">
+                            <span class="info-label">生日：</span>
+                            <span class="info-value">1998年5月15日</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">居住地：</span>
+                            <span class="info-value">台北市</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Email：</span>
+                            <span class="info-value">example@email.com</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">專業領域：</span>
+                            <span class="info-value">前端開發 / UI設計</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技能專長區塊 -->
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <h2 class="section-title">技能專長</h2>
+            <p class="section-subtitle">我擅長的技術與工具</p>
+            
+            <div class="skills-grid">
+                <!-- 前端開發 -->
+                <div class="skill-category">
+                    <h3>前端開發</h3>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>HTML5 / CSS3</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>JavaScript</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>React.js</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Vue.js</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 設計工具 -->
+                <div class="skill-category">
+                    <h3>設計工具</h3>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Figma</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Adobe XD</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Photoshop</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 70%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 其他技能 -->
+                <div class="skill-category">
+                    <h3>其他技能</h3>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Git / GitHub</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>響應式設計</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>SEO 優化</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 作品集區塊 -->
+    <section id="portfolio" class="portfolio-section">
+        <div class="container">
+            <h2 class="section-title">作品集</h2>
+            <p class="section-subtitle">我最近完成的專案與作品</p>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <img src="project1.jpg" alt="專案1">
+                        <div class="portfolio-overlay">
+                            <h3>電商購物網站</h3>
+                            <p>使用 React 與 Node.js 開發的全端電商平台</p>
+                            <a href="#" class="view-project">查看詳情 →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <img src="project2.jpg" alt="專案2">
+                        <div class="portfolio-overlay">
+                            <h3>企業形象網站</h3>
+                            <p>響應式設計的企業官網，注重 UX/UI</p>
+                            <a href="#" class="view-project">查看詳情 →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <img src="project3.jpg" alt="專案3">
+                        <div class="portfolio-overlay">
+                            <h3>行動餐廳訂位 App</h3>
+                            <p>使用 Flutter 開發的跨平台應用程式</p>
+                            <a href="#" class="view-project">查看詳情 →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <img src="project4.jpg" alt="專案4">
+                        <div class="portfolio-overlay">
+                            <h3>個人部落格平台</h3>
+                            <p>整合 CMS 的部落格系統，支援 Markdown</p>
+                            <a href="#" class="view-project">查看詳情 →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <img src="project5.jpg" alt="專案5">
+                        <div class="portfolio-overlay">
+                            <h3>天氣預報應用</h3>
+                            <p>串接氣象 API 的即時天氣查詢工具</p>
+                            <a href="#" class="view-project">查看詳情 →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <img src="project6.jpg" alt="專案6">
+                        <div class="portfolio-overlay">
+                            <h3>任務管理系統</h3>
+                            <p>團隊協作的專案管理工具</p>
+                            <a href="#" class="view-project">查看詳情 →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 學經歷區塊 -->
+    <section id="experience" class="experience-section">
+        <div class="container">
+            <h2 class="section-title">學經歷</h2>
+            
+            <div class="experience-grid">
+                <!-- 工作經驗 -->
+                <div class="experience-column">
+                    <h3 class="column-title">💼 工作經驗</h3>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">2022 - 現在</span>
+                            <h4>前端開發工程師</h4>
+                            <p class="company">科技公司 A</p>
+                            <ul>
+                                <li>負責公司主要產品的前端開發與維護</li>
+                                <li>參與 UI/UX 設計討論，優化使用者體驗</li>
+                                <li>協助建立前端開發規範與最佳實踐</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">2020 - 2022</span>
+                            <h4>網頁設計師</h4>
+                            <p class="company">設計工作室 B</p>
+                            <ul>
+                                <li>設計並開發客戶的企業網站與行銷頁面</li>
+                                <li>協助品牌視覺識別系統的建立</li>
+                                <li>完成超過 20 個客戶專案</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">2019 - 2020</span>
+                            <h4>前端實習生</h4>
+                            <p class="company">新創公司 C</p>
+                            <ul>
+                                <li>學習現代前端開發技術與工具</li>
+                                <li>參與產品功能開發與測試</li>
+                                <li>協助文件撰寫與程式碼審查</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 教育背景 -->
+                <div class="experience-column">
+                    <h3 class="column-title">🎓 教育背景</h3>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">2015 - 2019</span>
+                            <h4>資訊工程學系 學士</h4>
+                            <p class="company">國立大學</p>
+                            <ul>
+                                <li>主修：軟體工程與網頁技術</li>
+                                <li>GPA: 3.8 / 4.0</li>
+                                <li>畢業專題：智慧型推薦系統開發</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3 class="column-title" style="margin-top: 40px;">📜 證照與獎項</h3>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">2023</span>
+                            <h4>Google UX Design 專業證書</h4>
+                            <p class="company">Coursera</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">2022</span>
+                            <h4>JavaScript 開發者認證</h4>
+                            <p class="company">W3C</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">2021</span>
+                            <h4>黑客松競賽 第二名</h4>
+                            <p class="company">台北創新黑客松</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 聯絡方式區塊 -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">聯絡我</h2>
+            <p class="section-subtitle">歡迎與我交流合作機會或技術討論</p>
+            
+            <div class="contact-content">
+                <!-- 聯絡資訊 -->
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p>example@email.com</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div class="contact-details">
+                            <h4>電話</h4>
+                            <p>+886 912-345-678</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-details">
+                            <h4>地址</h4>
+                            <p>台北市信義區，台灣</p>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <h4>社群媒體</h4>
+                        <div class="social-icons">
+                            <a href="#" class="social-icon">GitHub</a>
+                            <a href="#" class="social-icon">LinkedIn</a>
+                            <a href="#" class="social-icon">Medium</a>
+                            <a href="#" class="social-icon">Instagram</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 聯絡表單 -->
+                <div class="contact-form">
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label for="name">姓名</label>
+                            <input type="text" id="name" name="name" required placeholder="請輸入您的姓名">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="請輸入您的 Email">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">主旨</label>
+                            <input type="text" id="subject" name="subject" required placeholder="請輸入主旨">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">訊息內容</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="請輸入您想說的話..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">送出訊息</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁尾 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 張小明. All Rights Reserved.</p>
+            <p>Made with ❤️ using HTML & CSS</p>
+        </div>
+    </footer>
+</body>
+</html>
